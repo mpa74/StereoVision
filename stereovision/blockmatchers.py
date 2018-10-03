@@ -249,7 +249,7 @@ class StereoSGBM(BlockMatcher):
     @SADWindowSize.setter
     def SADWindowSize(self, value):
         """Set private ``_sad_window_size`` and reset ``_block_matcher``."""
-        if value >= 1 and value <= 11 and value % 2:
+        if 1 <= value <= 11 and value % 2:
             self._sad_window_size = value
         else:
             raise InvalidSADWindowSizeError("SADWindowSize must be odd and "
@@ -264,7 +264,7 @@ class StereoSGBM(BlockMatcher):
     @uniquenessRatio.setter
     def uniquenessRatio(self, value):
         """Set private ``_uniqueness`` and reset ``_block_matcher``."""
-        if value >= 5 and value <= 15:
+        if 5 <= value <= 15:
             self._uniqueness = value
         else:
             raise InvalidUniquenessRatioError("Uniqueness ratio must be "
@@ -279,7 +279,7 @@ class StereoSGBM(BlockMatcher):
     @speckleWindowSize.setter
     def speckleWindowSize(self, value):
         """Set private ``_speckle_window_size`` and reset ``_block_matcher``."""
-        if value >= 0 and value <= 200:
+        if 0 <= value <= 200:
             self._speckle_window_size = value
         else:
             raise InvalidSpeckleWindowSizeError("Speckle window size must be 0 "

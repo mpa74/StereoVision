@@ -54,7 +54,7 @@ def main():
     if args.calibration_folder and not args.square_size:
         args.print_help()
 
-    progress = ProgressBar(max_value=args.num_pictures,
+    progress = ProgressBar(maxval=args.num_pictures,
                            widgets=[Bar("=", "[", "]"),
                                     " ", Percentage()])
     if not os.path.exists(args.output_folder):
