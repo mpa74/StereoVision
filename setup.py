@@ -50,5 +50,5 @@ setup(name="StereoVision",
                    "or later (GPLv3+)",
                    "Natural Language :: English",
                    "Operating System :: OS Independent",
-                   "Programming Language :: Python :: 3.7",
+                   "Programming Language :: Python :: 3.6",
                    "Topic :: Multimedia :: Graphics :: Capture"])
