@@ -116,7 +116,7 @@ class ChessboardFinder(StereoPair):
 
 
 class CalibratedPair(StereoPair):
-    # A "StereoPair" that works with rectified images and produces point clouds.
+    # A [StereoPair] that works with rectified images and produces point clouds.
     def __init__(self, devices, calibration, block_matcher):
         # Initialize cameras.
 
@@ -147,7 +147,8 @@ class CalibratedPair(StereoPair):
 
     def live_point_cloud(self, pair):
         # create a live point cloud from cameras.
-        while True:
+        while True and self.get_frames():
             self.get_point_cloud(pair)
+            cv2.waitKey()
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
