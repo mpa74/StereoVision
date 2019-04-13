@@ -72,13 +72,13 @@ class StereoCalibration(object):
                     if action == 'w':
                         np.save(filename, self.__dict__[key][side])
                     else:
-                        self.__dict__[key][side] = np.load(filename)
+                        self.__dict__[key][side] = np.load(filename, encoding='latin1')
             else:
                 filename = os.path.join(output_folder, "{}.npy".format(key))
                 if action == 'w':
                     np.save(filename, self.__dict__[key])
                 else:
-                    self.__dict__[key] = np.load(filename)
+                    self.__dict__[key] = np.load(filename, encoding='latin1')
 
     def __init__(self, calibration=None, input_folder=None):
         """

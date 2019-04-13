@@ -195,8 +195,8 @@ class StereoBM(BlockMatcher):
                 gray.append(cv2.cvtColor(side, cv2.COLOR_BGR2GRAY))
         else:
             gray = pair
-        return self._block_matcher.compute(gray[0], gray[1],
-                                           disptype=cv2.CV_32F)
+        self._block_matcher = cv2.StereoMatcher.compute(gray[0], gray[1]).astype(np.float32)/16.0
+        return self
 
 
 class StereoSGBM(BlockMatcher):
@@ -358,12 +358,13 @@ class StereoSGBM(BlockMatcher):
         self._block_matcher = cv2.StereoSGBM_create(minDisparity=self._min_disparity,
                                                     numDisparities=self._num_disp,
                                                     blockSize=self._sad_window_size,
+                                                    P1=self._P1,
+                                                    P2=self._P2,
+                                                    disp12MaxDiff=self._max_disparity,
+                                                    preFilterCap=None,
                                                     uniquenessRatio=self._uniqueness,
                                                     speckleWindowSize=self._speckle_window_size,
                                                     speckleRange=self._speckle_range,
-                                                    disp12MaxDiff=self._max_disparity,
-                                                    P1=self._P1,
-                                                    P2=self._P2,
                                                     mode=self._full_dp)
 
     def __init__(self, min_disparity=16, num_disp=96, sad_window_size=3,
