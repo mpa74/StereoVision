@@ -361,7 +361,7 @@ class StereoSGBM(BlockMatcher):
                                                     P1=self._P1,
                                                     P2=self._P2,
                                                     disp12MaxDiff=self._max_disparity,
-                                                    preFilterCap=None,
+                                                    preFilterCap=2,
                                                     uniquenessRatio=self._uniqueness,
                                                     speckleWindowSize=self._speckle_window_size,
                                                     speckleRange=self._speckle_range,
